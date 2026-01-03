@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+PERSISTENCE.XML - JPA Configuration File
+
+This file configures the Java Persistence API (JPA) and Hibernate.
+
+REAL-WORLD USE:
+- Every JPA application needs this configuration
+- Defines database connection details
+- Specifies entity classes
+- Sets Hibernate properties
+- Frequency: Required once per project
+
+TYPESCRIPT/ANGULAR COMPARISON:
+This is similar to:
+- environment.ts (database configuration)
+- ormconfig.json (TypeORM configuration)
+- app.module.ts database setup
+
+In TypeScript with TypeORM:
+{
+  type: "postgres",
+  host: "localhost",
+  database: "mydb",
+  entities: ["src/entities/*.ts"]
+}
+-->
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+             https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <!-- Persistence Unit: Configuration set -->
+    <persistence-unit name="JavaLearningPU" transaction-type="RESOURCE_LOCAL">
+
+        <!-- JPA Provider (Hibernate) -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Entity Classes (commented - we'll use auto-discovery) -->
+        <!--
+        <class>com.javalearning.jpa.entities.Student</class>
+        <class>com.javalearning.jpa.entities.Laptop</class>
+        -->
+
+        <properties>
+            <!-- Database Connection Settings -->
+            <!-- Using H2 in-memory database (no installation needed) -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:testdb"/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+
+            <!-- Hibernate Settings -->
+
+            <!-- Dialect: SQL variant for specific database -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <!-- Show SQL: Print SQL statements to console -->
+            <!-- Very useful for learning and debugging! -->
+            <property name="hibernate.show_sql" value="true"/>
+
+            <!-- Format SQL: Make SQL readable -->
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- SQL Comments: Add comments to generated SQL -->
+            <property name="hibernate.use_sql_comments" value="true"/>
+
+            <!-- Schema Generation Strategy -->
+            <!-- create: Drop and recreate schema each time (for learning)
+                 update: Update schema if needed (for development)
+                 validate: Only validate schema (for production)
+                 none: Do nothing -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+            <!-- Connection Pool (HikariCP - fastest connection pool) -->
+            <property name="hibernate.connection.provider_class"
+                      value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
+            <property name="hibernate.hikari.minimumIdle" value="5"/>
+            <property name="hibernate.hikari.maximumPoolSize" value="10"/>
+
+            <!-- Second Level Cache (we'll explore this later) -->
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.region.factory_class"
+                      value="org.hibernate.cache.jcache.JCacheRegionFactory"/>
+
+            <!-- Query Cache -->
+            <property name="hibernate.cache.use_query_cache" value="true"/>
+
+            <!-- Statistics (for learning about performance) -->
+            <property name="hibernate.generate_statistics" value="true"/>
+
+        </properties>
+    </persistence-unit>
+
+</persistence>
