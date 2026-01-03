@@ -1,5 +1,6 @@
 package com.javalearning.basics;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -140,7 +141,6 @@ public class LoopsAndMethods {
      */
     public static void demonstrateNestedLoops() {
         System.out.println("\n=== NESTED LOOPS ===");
-
         // Multiplication table
         System.out.println("Multiplication table (3x3):");
         for (int i = 1; i <= 3; i++) {
