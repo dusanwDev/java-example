@@ -5,6 +5,7 @@ import com.javalearning.taskmanagement.TaskManagementApp;
 import com.javalearning.banking.BankingApp;
 import com.javalearning.ecommerce.EcommerceApp;
 import com.javalearning.threading.ThreadingApp;
+import com.javalearning.jpa.demos.*;
 
 import java.util.Scanner;
 
@@ -40,13 +41,22 @@ public class MainApp {
         System.out.println("  8. E-commerce Inventory (generics, hashmaps, enums)");
         System.out.println("  9. Threading & Concurrency (threads, timers)");
 
+        System.out.println("\n💾 JPA/HIBERNATE (PERSISTENCE):");
+        System.out.println("  12. JPA Relationships Demo (One-to-One, Many-to-Many, etc.)");
+        System.out.println("  13. Fetch Strategies (EAGER vs LAZY, N+1 problem)");
+        System.out.println("  14. CRUD Operations (Create, Read, Update, Delete)");
+        System.out.println("  15. HQL Examples (Queries, Joins, Aggregations)");
+        System.out.println("  16. Caching Demo (L1, L2, Query cache)");
+        System.out.println("  17. Entity Lifecycle (States and transitions)");
+
         System.out.println("\n🎯 ALL EXAMPLES:");
-        System.out.println("  10. Run ALL Basic Examples");
-        System.out.println("  11. Run ALL Applications");
+        System.out.println("  18. Run ALL Basic Examples");
+        System.out.println("  19. Run ALL Applications");
+        System.out.println("  20. Run ALL JPA/Hibernate Demos");
 
         System.out.println("\n  0. Exit");
         System.out.println("\n" + "─".repeat(56));
-        System.out.print("Choose an option (0-11): ");
+        System.out.print("Choose an option (0-20): ");
     }
 
     /**
@@ -81,6 +91,25 @@ public class MainApp {
         ThreadingApp.main(null);
 
         System.out.println("\n\n✅ ALL APPLICATIONS COMPLETED!");
+        System.out.println("═".repeat(60));
+    }
+
+    /**
+     * Run all JPA/Hibernate demos
+     */
+    public static void runAllJPADemos() {
+        System.out.println("\n\n" + "═".repeat(60));
+        System.out.println("RUNNING ALL JPA/HIBERNATE DEMONSTRATIONS");
+        System.out.println("═".repeat(60));
+
+        RelationshipsDemo.runAllDemos();
+        FetchStrategiesDemo.runAllDemos();
+        CrudOperationsDemo.runAllDemos();
+        HqlExamplesDemo.runAllDemos();
+        CachingDemo.runAllDemos();
+        EntityLifecycleDemo.runAllDemos();
+
+        System.out.println("\n\n✅ ALL JPA/HIBERNATE DEMOS COMPLETED!");
         System.out.println("═".repeat(60));
     }
 
@@ -149,7 +178,18 @@ public class MainApp {
         System.out.println("  ✓ Threading (#69)");
         System.out.println("  ✓ Multithreading (#70)");
 
-        System.out.println("\n📊 TOTAL: 50+ Java concepts covered!");
+        System.out.println("\n💾 JPA/HIBERNATE (PERSISTENCE):");
+        System.out.println("  ✓ Entity mapping (JPA annotations)");
+        System.out.println("  ✓ Relationships (One-to-One, One-to-Many, Many-to-Many)");
+        System.out.println("  ✓ Fetch strategies (EAGER vs LAZY)");
+        System.out.println("  ✓ CRUD operations (persist, find, merge, remove)");
+        System.out.println("  ✓ HQL queries (SELECT, WHERE, JOIN, aggregations)");
+        System.out.println("  ✓ Caching (First-level, Second-level, Query cache)");
+        System.out.println("  ✓ Entity lifecycle (Transient, Persistent, Detached, Removed)");
+        System.out.println("  ✓ get() vs load() vs find()");
+        System.out.println("  ✓ 35+ Hibernate-specific annotations");
+
+        System.out.println("\n📊 TOTAL: 60+ Java concepts covered!");
         System.out.println("All examples include TypeScript/Angular comparisons!");
     }
 
@@ -224,16 +264,50 @@ public class MainApp {
                         ThreadingApp.main(null);
                         break;
 
-                    case 10:
+                    case 12:
+                        System.out.println("💾 Running JPA Relationships Demo...");
+                        RelationshipsDemo.runAllDemos();
+                        break;
+
+                    case 13:
+                        System.out.println("⚡ Running Fetch Strategies Demo...");
+                        FetchStrategiesDemo.runAllDemos();
+                        break;
+
+                    case 14:
+                        System.out.println("📝 Running CRUD Operations Demo...");
+                        CrudOperationsDemo.runAllDemos();
+                        break;
+
+                    case 15:
+                        System.out.println("🔍 Running HQL Examples Demo...");
+                        HqlExamplesDemo.runAllDemos();
+                        break;
+
+                    case 16:
+                        System.out.println("🗃️ Running Caching Demo...");
+                        CachingDemo.runAllDemos();
+                        break;
+
+                    case 17:
+                        System.out.println("🔄 Running Entity Lifecycle Demo...");
+                        EntityLifecycleDemo.runAllDemos();
+                        break;
+
+                    case 18:
                         runAllBasics();
                         break;
 
-                    case 11:
+                    case 19:
                         runAllApplications();
                         break;
 
+                    case 20:
+                        runAllJPADemos();
+                        break;
+
                     default:
-                        System.out.println("❌ Invalid choice. Please select 0-11.");
+                        System.out.println("❌ Invalid choice. Please select 0-20.");
                         break;
                 }
 
@@ -243,7 +317,7 @@ public class MainApp {
                 }
 
             } catch (Exception e) {
-                System.out.println("❌ Invalid input. Please enter a number (0-11).");
+                System.out.println("❌ Invalid input. Please enter a number (0-20).");
                 scanner.nextLine(); // Clear buffer
             }
         }

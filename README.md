@@ -10,7 +10,7 @@ Welcome! This project is specifically designed for **JavaScript/TypeScript/Angul
 
 ## 📚 What's Included?
 
-This comprehensive learning project covers **50+ Java topics** organized from basics to advanced concepts:
+This comprehensive learning project covers **60+ Java topics** organized from basics to advanced concepts, including JPA/Hibernate:
 
 ### 📌 Fundamentals (Basics Package)
 - Control flow (if, switch, ternary, logical operators)
@@ -49,6 +49,18 @@ This comprehensive learning project covers **50+ Java topics** organized from ba
 - Anonymous classes
 - TimerTasks (scheduled operations)
 
+### 💾 JPA/Hibernate (Persistence)
+- **Entity Mapping:** @Entity, @Table, @Id, @GeneratedValue, @Column
+- **Relationships:** One-to-One, One-to-Many, Many-to-One, Many-to-Many
+- **Fetch Strategies:** EAGER vs LAZY loading, N+1 problem solutions
+- **CRUD Operations:** persist(), find(), merge(), remove()
+- **HQL Queries:** SELECT, WHERE, JOIN, aggregations
+- **Caching:** First-level (L1), Second-level (L2), Query cache
+- **Entity Lifecycle:** Transient, Persistent, Detached, Removed states
+- **Advanced Features:** get() vs load(), Cascade operations, Orphan removal
+- **35+ Hibernate Annotations:** Complete reference with examples
+- **TypeORM Comparisons:** Side-by-side with TypeScript equivalents
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -56,6 +68,7 @@ This comprehensive learning project covers **50+ Java topics** organized from ba
 - **Java JDK 21** (or later) - Oracle JDK recommended
 - **IntelliJ IDEA** (latest version)
 - **Maven** (usually bundled with IntelliJ)
+- **H2 Database** (included as Maven dependency - no separate installation needed)
 
 ### Running in IntelliJ IDEA
 
@@ -94,6 +107,14 @@ Each topic has its own runnable class:
 - `EcommerceApp.java` - Generics, HashMaps, enums
 - `ThreadingApp.java` - Threading, multithreading, timers
 
+**JPA/Hibernate Demos:**
+- `RelationshipsDemo.java` - All relationship types with examples
+- `FetchStrategiesDemo.java` - EAGER vs LAZY, N+1 problem solutions
+- `CrudOperationsDemo.java` - Complete CRUD with best practices
+- `HqlExamplesDemo.java` - HQL queries, joins, aggregations
+- `CachingDemo.java` - First-level, second-level, query cache
+- `EntityLifecycleDemo.java` - Entity states and transitions
+
 To run individually:
 - Right-click on any class with a `main()` method
 - Select "Run 'ClassName.main()'"
@@ -115,42 +136,73 @@ mvn exec:java -Dexec.mainClass="com.javalearning.basics.Calculator"
 
 ```
 java-example/
-├── pom.xml                          # Maven configuration
-├── README.md                        # This file
-└── src/main/java/com/javalearning/
-    ├── MainApp.java                 # Interactive menu (START HERE)
+├── pom.xml                              # Maven configuration
+├── README.md                            # This file
+├── JPA_HIBERNATE_GUIDE.md               # Quick start guide
+├── JPA_ANNOTATIONS_REFERENCE.md         # Part 1: Standard JPA annotations
+├── JPA_ANNOTATIONS_REFERENCE_PART2.md   # Part 2: Advanced JPA annotations
+├── HIBERNATE_SPECIFIC_ANNOTATIONS.md    # 35+ Hibernate-only annotations
+│
+└── src/main/
+    ├── java/com/javalearning/
+    │   ├── MainApp.java                 # Interactive menu (START HERE)
+    │   │
+    │   ├── basics/                      # Fundamental concepts
+    │   │   ├── ControlFlow.java         # If, switch, ternary
+    │   │   ├── LoopsAndMethods.java     # Loops, methods
+    │   │   ├── MathAndStrings.java      # Math, strings
+    │   │   ├── ArrayExamples.java       # Arrays
+    │   │   └── Calculator.java          # Calculator program
+    │   │
+    │   ├── taskmanagement/              # OOP Application
+    │   │   ├── Task.java                # Task model
+    │   │   ├── TaskManager.java         # Manager class
+    │   │   ├── Priority.java            # Enum example
+    │   │   ├── TaskStatus.java          # Enum example
+    │   │   └── TaskManagementApp.java   # Main app
+    │   │
+    │   ├── banking/                     # Inheritance Application
+    │   │   ├── Transactable.java        # Interface
+    │   │   ├── Account.java             # Abstract class
+    │   │   ├── SavingsAccount.java      # Concrete class
+    │   │   ├── CheckingAccount.java     # Concrete class
+    │   │   ├── Customer.java            # Aggregation example
+    │   │   └── BankingApp.java          # Main app
+    │   │
+    │   ├── ecommerce/                   # Generics Application
+    │   │   ├── Product.java             # Product model
+    │   │   ├── ProductCategory.java     # Enum
+    │   │   ├── InventoryManager.java    # Generic class
+    │   │   ├── ShoppingCart.java        # HashMap example
+    │   │   └── EcommerceApp.java        # Main app
+    │   │
+    │   ├── threading/                   # Concurrency Examples
+    │   │   └── ThreadingApp.java        # Threading demos
+    │   │
+    │   └── jpa/                         # JPA/Hibernate Examples
+    │       ├── config/
+    │       │   └── HibernateUtil.java   # EntityManager factory
+    │       ├── entities/
+    │       │   ├── Student.java         # Basic entity example
+    │       │   └── Laptop.java          # Entity with relationships
+    │       ├── embeddable/
+    │       │   └── Address.java         # Embeddable value object
+    │       ├── relationships/
+    │       │   ├── Person.java          # One-to-One owner
+    │       │   ├── Passport.java        # One-to-One inverse
+    │       │   ├── Course.java          # One-to-Many
+    │       │   └── StudentEnrollment.java  # Many-to-One, Many-to-Many
+    │       └── demos/
+    │           ├── RelationshipsDemo.java    # Relationship examples
+    │           ├── FetchStrategiesDemo.java  # EAGER vs LAZY
+    │           ├── CrudOperationsDemo.java   # CRUD operations
+    │           ├── HqlExamplesDemo.java      # HQL queries
+    │           ├── CachingDemo.java          # Caching strategies
+    │           └── EntityLifecycleDemo.java  # Entity states
     │
-    ├── basics/                      # Fundamental concepts
-    │   ├── ControlFlow.java         # If, switch, ternary
-    │   ├── LoopsAndMethods.java     # Loops, methods
-    │   ├── MathAndStrings.java      # Math, strings
-    │   ├── ArrayExamples.java       # Arrays
-    │   └── Calculator.java          # Calculator program
-    │
-    ├── taskmanagement/              # OOP Application
-    │   ├── Task.java                # Task model
-    │   ├── TaskManager.java         # Manager class
-    │   ├── Priority.java            # Enum example
-    │   ├── TaskStatus.java          # Enum example
-    │   └── TaskManagementApp.java   # Main app
-    │
-    ├── banking/                     # Inheritance Application
-    │   ├── Transactable.java        # Interface
-    │   ├── Account.java             # Abstract class
-    │   ├── SavingsAccount.java      # Concrete class
-    │   ├── CheckingAccount.java     # Concrete class
-    │   ├── Customer.java            # Aggregation example
-    │   └── BankingApp.java          # Main app
-    │
-    ├── ecommerce/                   # Generics Application
-    │   ├── Product.java             # Product model
-    │   ├── ProductCategory.java     # Enum
-    │   ├── InventoryManager.java    # Generic class
-    │   ├── ShoppingCart.java        # HashMap example
-    │   └── EcommerceApp.java        # Main app
-    │
-    └── threading/                   # Concurrency Examples
-        └── ThreadingApp.java        # Threading demos
+    └── resources/
+        └── META-INF/
+            └── persistence.xml          # JPA configuration
 ```
 
 ## 🎓 Learning Path
@@ -183,6 +235,16 @@ java-example/
    - Run `ThreadingApp.java`
    - Understand threads vs async/await
    - Learn about thread pools
+
+6. **JPA/Hibernate Persistence** (3-4 days)
+   - Read `JPA_HIBERNATE_GUIDE.md` for overview
+   - Run `RelationshipsDemo.java` - Understand entity relationships
+   - Run `CrudOperationsDemo.java` - Learn CRUD operations
+   - Run `FetchStrategiesDemo.java` - Master fetch strategies
+   - Run `HqlExamplesDemo.java` - Practice HQL queries
+   - Run `CachingDemo.java` - Learn caching strategies
+   - Run `EntityLifecycleDemo.java` - Understand entity states
+   - Reference annotation guides as needed
 
 ## 🔄 TypeScript to Java Quick Reference
 
@@ -273,6 +335,48 @@ map.put("user1", new User("John", 25));
 User user = map.get("user1");
 ```
 
+### Database Persistence (TypeORM vs JPA/Hibernate)
+```typescript
+// TypeScript + TypeORM
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  name: string;
+
+  @OneToMany(() => Post, post => post.user)
+  posts: Post[];
+}
+
+// Usage
+const user = await userRepository.save(new User());
+const found = await userRepository.findOne({ where: { id: 1 } });
+```
+```java
+// Java + JPA/Hibernate
+@Entity
+public class User {
+  @Id
+  @GeneratedValue
+  private Long id;
+
+  @Column
+  private String name;
+
+  @OneToMany(mappedBy = "user")
+  private List<Post> posts;
+
+  // Getters/setters...
+}
+
+// Usage
+EntityManager em = emf.createEntityManager();
+em.persist(new User());
+User found = em.find(User.class, 1L);
+```
+
 ## 📝 Topics Coverage
 
 | # | Topic | Location | Real-World Use |
@@ -359,20 +463,29 @@ User user = map.get("user1");
 
 After completing this course, you'll be ready to:
 
-1. **Spring Boot Development**
-   - Build REST APIs
-   - Database integration (JPA/Hibernate)
-   - Dependency Injection
+1. **Spring Boot Development** ⭐ RECOMMENDED NEXT
+   - Build REST APIs (you already know JPA/Hibernate!)
+   - Spring Data JPA (simplifies database operations)
+   - Dependency Injection & IoC
+   - Spring Security for authentication
 
-2. **Enterprise Java**
-   - Maven/Gradle build tools
-   - Testing (JUnit, Mockito)
-   - Design patterns
+2. **Testing & Quality**
+   - JUnit 5 (unit testing)
+   - Mockito (mocking)
+   - Integration tests with Spring Boot Test
+   - Test-driven development (TDD)
 
-3. **Advanced Topics**
-   - Java Streams API
-   - Functional programming
-   - Reactive programming
+3. **Enterprise Java**
+   - Maven/Gradle build tools (Maven already covered!)
+   - Docker containerization
+   - Microservices architecture
+   - Design patterns (Gang of Four)
+
+4. **Advanced Topics**
+   - Java Streams API & Lambda expressions
+   - Functional programming in Java
+   - Reactive programming (Project Reactor)
+   - Message queues (RabbitMQ, Kafka)
 
 ## 📚 Additional Resources
 
